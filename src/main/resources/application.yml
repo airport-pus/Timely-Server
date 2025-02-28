@@ -2,3 +2,15 @@ spring:
   config:
     import:
       - optional:file:env/spring.env[.properties]
+
+  api:
+    service-key: ${SERVICE_KEY}
+    info-base-url: ${INFO_BASE_URL}
+    elementary-base-url: ${ELEMENTARY_BASE_URL}
+    middle-base-url: ${MEDDLE_BASE_URL}
+    high-base-url: ${HIGH_BASE_URL}
+
+logging:
+  level:
+    org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE
+    org.springframework.web.reactive.function.client.WebClient: TRACE
