@@ -4,26 +4,26 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class ApiMiddleTimetableResponse(
     @JsonProperty("misTimetable")
-    val misTimetable: List<MisTimetableData>?
+    val misTimetable: List<MisTimetable>?
 )
 
-data class MisTimetableData(
+data class MisTimetable(
     @JsonProperty("head")
-    val head: List<HeadData>?,
+    val head: List<Head>?,
 
     @JsonProperty("row")
-    val row: List<RowData>?
+    val row: List<Row>?
 )
 
-data class HeadData(
+data class Head(
     @JsonProperty("list_total_count")
     val listTotalCount: Int?,
 
     @JsonProperty("RESULT")
-    val result: ResultData?
+    val result: Result?
 )
 
-data class ResultData(
+data class Result(
     @JsonProperty("CODE")
     val code: String?,
 
@@ -31,7 +31,7 @@ data class ResultData(
     val message: String?
 )
 
-data class RowData(
+data class Row(
     @JsonProperty("ATPT_OFCDC_SC_CODE")
     val atptOfcdcScCode: String?,
 
