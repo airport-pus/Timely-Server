@@ -7,8 +7,13 @@ enum class SchoolType {
 
     companion object {
         fun from(value: String): SchoolType {
-            return entries.find { it.name.equals(value, ignoreCase = true) }
-                ?: throw SchoolTypeInvalidException()
+            return when (value.lowercase()) {
+                "elementary", "초등학교" -> ELEMENTARY
+                "middle", "중학교" -> MIDDLE
+                "high", "고등학교" -> HIGH
+                else -> throw SchoolTypeInvalidException()
+            }
         }
     }
 }
+
