@@ -1,11 +1,13 @@
 package com.timely.common.exception
 
 import com.timely.common.logging.LoggingUtils
+import io.swagger.v3.oas.annotations.Hidden
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 
+@Hidden
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
