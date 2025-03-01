@@ -1,4 +1,4 @@
-package com.timely.domain.elementary.service.dto
+package com.timely.domain.timetable.service.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -9,21 +9,21 @@ data class ApiElementaryTimeResponse(
 
 data class ElsTimetable(
     @JsonProperty("head")
-    val head: List<Head>?,
+    val head: List<ElsHead>?,
 
     @JsonProperty("row")
-    val row: List<Row>?
+    val row: List<ElsRow>?
 )
 
-data class Head(
+data class ElsHead(
     @JsonProperty("list_total_count")
     val listTotalCount: Int?,
 
     @JsonProperty("RESULT")
-    val result: Result?
+    val result: ElsResult?
 )
 
-data class Result(
+data class ElsResult(
     @JsonProperty("CODE")
     val code: String?,
 
@@ -31,7 +31,7 @@ data class Result(
     val message: String?
 )
 
-data class Row(
+data class ElsRow(
     @JsonProperty("ATPT_OFCDC_SC_CODE")
     val atptOfcdcScCode: String?,
 
