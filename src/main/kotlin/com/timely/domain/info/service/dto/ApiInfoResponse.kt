@@ -1,8 +1,8 @@
-package com.timely.domain.schoolInfo.service.dto
+package com.timely.domain.info.service.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class ApiSchoolInfoResponse(
+data class ApiInfoResponse(
     @JsonProperty("schoolInfo")
     val schoolInfo: List<SchoolInfo>
 )
