@@ -1,6 +1,7 @@
-package com.timely.domain.high.controller.dto
+package com.timely.domain.timetable.controller.dto
 
-data class HighTimeRequest(
+data class TimetableRequest(
+    val schoolType: String,
     val atptOfcdcScCode: String,
     val sdSchulCode: String,
     val grade: String,
