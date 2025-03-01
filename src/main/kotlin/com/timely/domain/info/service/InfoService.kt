@@ -1,19 +1,19 @@
-package com.timely.domain.schoolInfo.service
+package com.timely.domain.info.service
 
 import com.timely.common.config.ApiProperties
-import com.timely.domain.schoolInfo.controller.dto.SchoolInfoResponse
-import com.timely.domain.schoolInfo.service.dto.ApiSchoolInfoResponse
+import com.timely.domain.info.controller.dto.InfoResponse
+import com.timely.domain.info.service.dto.ApiInfoResponse
 import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Mono
 
 @Service
-class SchoolInfoService(
+class InfoService(
     private val apiProperties: ApiProperties,
     private val infoWebClient: WebClient
 ) {
 
-    fun getSchoolInfo(schoolName: String): Mono<SchoolInfoResponse> {
+    fun getInfo(schoolName: String): Mono<InfoResponse> {
         return infoWebClient.get()
             .uri { builder ->
                 builder
@@ -23,7 +23,7 @@ class SchoolInfoService(
                     .build()
             }
             .retrieve()
-            .bodyToMono(ApiSchoolInfoResponse::class.java)
-            .mapNotNull(SchoolInfoResponse::from)
+            .bodyToMono(ApiInfoResponse::class.java)
+            .mapNotNull(InfoResponse::from)
     }
 }
