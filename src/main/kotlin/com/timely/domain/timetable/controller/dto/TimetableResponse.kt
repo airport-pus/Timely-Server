@@ -1,5 +1,6 @@
 package com.timely.domain.timetable.controller.dto
 
+import com.timely.domain.timetable.exception.TimetableEmptyException
 import com.timely.domain.timetable.service.dto.ApiElementaryTimeResponse
 import com.timely.domain.timetable.service.dto.ApiMiddleTimetableResponse
 import com.timely.domain.timetable.service.dto.ApiHighTimetableResponse
@@ -23,8 +24,11 @@ data class TimetableResponse(
                                 itrtCntnt = row.itrtCntnt ?: ""
                             )
                     } ?: emptyList()
-                }
-            return TimetableResponse(timeList ?: emptyList())
+                } ?: emptyList()
+
+            if (timeList.isEmpty()) throw TimetableEmptyException()
+
+            return TimetableResponse(timeList)
         }
 
         fun from(response: ApiMiddleTimetableResponse): TimetableResponse {
@@ -39,8 +43,11 @@ data class TimetableResponse(
                                 itrtCntnt = row.itrtCntnt ?: ""
                             )
                     } ?: emptyList()
-                }
-            return TimetableResponse(timeList ?: emptyList())
+                } ?: emptyList()
+
+            if (timeList.isEmpty()) throw TimetableEmptyException()
+
+            return TimetableResponse(timeList)
         }
 
         fun from(response: ApiHighTimetableResponse): TimetableResponse {
@@ -55,8 +62,11 @@ data class TimetableResponse(
                                 itrtCntnt = row.itrtCntnt ?: ""
                             )
                     } ?: emptyList()
-                }
-            return TimetableResponse(timeList ?: emptyList())
+                } ?: emptyList()
+
+            if (timeList.isEmpty()) throw TimetableEmptyException()
+
+            return TimetableResponse(timeList)
         }
     }
 }
