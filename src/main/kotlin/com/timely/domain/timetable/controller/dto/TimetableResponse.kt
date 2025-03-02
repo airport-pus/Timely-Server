@@ -8,19 +8,20 @@ import io.swagger.v3.oas.annotations.media.Schema
 @Schema(description = "시간표 응답 데이터")
 data class TimetableResponse(
     @Schema(description = "시간표 리스트", required = true)
-    val timeSummary: List<Timetable>
+    val timetable: List<Timetable>
 ) {
     companion object {
         fun from(response: ApiElementaryTimeResponse): TimetableResponse {
             val timeList = response.elsTimetable
                 ?.filter { it.row != null }
                 ?.flatMap { elsTimetable ->
-                    elsTimetable.row?.map { row ->
-                        Timetable(
-                            allTiYmd = row.allTiYmd ?: "",
-                            perio = row.perio ?: "",
-                            itrtCntnt = row.itrtCntnt ?: ""
-                        )
+                    elsTimetable.row?.mapNotNull { row ->
+                        if (row.itrtCntnt == "토요휴업일") null else
+                            Timetable(
+                                allTiYmd = row.allTiYmd ?: "",
+                                perio = row.perio ?: "",
+                                itrtCntnt = row.itrtCntnt ?: ""
+                            )
                     } ?: emptyList()
                 }
             return TimetableResponse(timeList ?: emptyList())
@@ -30,12 +31,13 @@ data class TimetableResponse(
             val timeList = response.misTimetable
                 ?.filter { it.row != null }
                 ?.flatMap { elsTimetable ->
-                    elsTimetable.row?.map { row ->
-                        Timetable(
-                            allTiYmd = row.allTiYmd ?: "",
-                            perio = row.perio ?: "",
-                            itrtCntnt = row.itrtCntnt ?: ""
-                        )
+                    elsTimetable.row?.mapNotNull { row ->
+                        if (row.itrtCntnt == "토요휴업일") null else
+                            Timetable(
+                                allTiYmd = row.allTiYmd ?: "",
+                                perio = row.perio ?: "",
+                                itrtCntnt = row.itrtCntnt ?: ""
+                            )
                     } ?: emptyList()
                 }
             return TimetableResponse(timeList ?: emptyList())
@@ -45,12 +47,13 @@ data class TimetableResponse(
             val timeList = response.hisTimetable
                 ?.filter { it.row != null }
                 ?.flatMap { elsTimetable ->
-                    elsTimetable.row?.map { row ->
-                        Timetable(
-                            allTiYmd = row.allTiYmd ?: "",
-                            perio = row.perio ?: "",
-                            itrtCntnt = row.itrtCntnt ?: ""
-                        )
+                    elsTimetable.row?.mapNotNull { row ->
+                        if (row.itrtCntnt == "토요휴업일") null else
+                            Timetable(
+                                allTiYmd = row.allTiYmd ?: "",
+                                perio = row.perio ?: "",
+                                itrtCntnt = row.itrtCntnt ?: ""
+                            )
                     } ?: emptyList()
                 }
             return TimetableResponse(timeList ?: emptyList())
