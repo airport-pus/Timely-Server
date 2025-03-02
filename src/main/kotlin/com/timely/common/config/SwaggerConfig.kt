@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Configuration
             | 400 | NULL_VALUE | 필수 값이 누락되었습니다. |
             | 400 | TIMETABLE_RESPONSE_TYPE_INVALID | Timetable Response 타입이 일치하지 않습니다. |
             | 400 | SCHOOL_TYPE_INVALID | 학교 타입이 일치하지 않습니다. |
+            | 400 | TIMETABLE_EMPTY | 시간표 데이터가 존재하지 않습니다. |
             | 500 | SERVER_UNKNOWN | 서버에서 알 수 없는 에러가 발생했습니다. |
             
             ### 오류 메시지 예시:
